@@ -74,9 +74,9 @@ export async function GET(req, { params }) {
 
   try {
     const data = await IdCard.find({}).sort({ createdAt: -1 });
-    return NextResponse.json(data[0]);
+    return NextResponse.json(data?.[0]);
   } catch (error) {
     console.log("CARD_GET", error);
-    return new NextResponse("RECENT_CARD_GET", error);
+    return new NextResponse.json({ RECENT_CARD_GET: error });
   }
 }

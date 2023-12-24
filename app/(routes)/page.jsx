@@ -34,14 +34,17 @@ const App = () => {
   useEffect(() => {
     const fetchDetails = async () => {
       let data;
-      if (objectId) {
-        data = await fetch(`api/${objectId}`);
-      } else {
-        data = await fetch(`api/`);
+      try {
+        if (objectId) {
+          data = await fetch(`api/${objectId}`);
+        } else {
+          data = await fetch(`api/`);
+        }
+        data = await data.json();
+        setData(data);
+      } catch (error) {
+        console.log(error);
       }
-
-      data = await data.json();
-      setData(data);
     };
 
     fetchDetails();
