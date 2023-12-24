@@ -103,7 +103,7 @@ const App = () => {
 
   return (
     <div className="my-auto max-h-[90%] w-2/3 lg:w-1/2 xl:w-1/3">
-      <Card className="flex flex-col p-4">
+      <Card className="flex flex-col p-4 border-0 shadow-none">
         <Card className="flex-grow">
           <CardHeader>
             <CardTitle className="text-3xl tracking-tight">Scan Card</CardTitle>
