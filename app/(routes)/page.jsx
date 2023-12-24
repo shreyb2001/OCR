@@ -24,6 +24,8 @@ const formSchema = z.object({
   image: z.string(),
 });
 
+export const revalidate = 0;
+
 const App = () => {
   const [file, setFile] = useState();
   const [objectId, setObjectId] = useState();
