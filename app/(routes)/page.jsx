@@ -118,8 +118,8 @@ const App = () => {
               {file && (
                 <Image
                   src={URL.createObjectURL(file)}
-                  width={150}
-                  height={150}
+                  width={220}
+                  height={220}
                   alt="Preview"
                   className="pb-4"
                 />

@@ -23,7 +23,7 @@ const CardClient = ({ data }) => {
     <>
       <div className="flex items-end justify-between">
         <div className="flex flex-col gap-2">
-          <h2 className="text-3xl font-bold tracking-tight">Cards (2)</h2>
+          <h2 className="text-3xl font-bold tracking-tight">Cards ({data.length})</h2>
           <p className="text-sm text-muted-foreground">
             View all your scanned cards.
           </p>

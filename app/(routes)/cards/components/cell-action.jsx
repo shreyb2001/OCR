@@ -25,13 +25,11 @@ const CellActon = ({ data }) => {
   const onDelete = async () => {
     try {
       setLoading(true);
-      await axios.delete(`/api/${params.storeId}/products/${data._id}`);
+      await axios.delete(`/api/${data._id}`);
       router.refresh();
-      toast.success("Product deleted.");
+      toast.success("Card deleted.");
     } catch (error) {
-      toast.error(
-        "Make sure you have removed all categories using this product."
-      );
+      toast.error("Card deletion was failed");
     } finally {
       setLoading(false);
       setOpen(false);
