@@ -96,7 +96,7 @@ export function DataTable({ columns, data, searchKey }) {
                   >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select a query" />
+                        <SelectValue placeholder="Identification Number" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
