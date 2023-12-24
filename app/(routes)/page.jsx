@@ -14,7 +14,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -23,8 +22,6 @@ import toast from "react-hot-toast";
 const formSchema = z.object({
   image: z.string(),
 });
-
-export const revalidate = 0;
 
 const App = () => {
   const [file, setFile] = useState();
@@ -155,7 +152,7 @@ const App = () => {
       </Card>
       <Button
         onClick={() => router.push("/cards")}
-        className="flex ml-auto my-4 "
+        className="flex ml-auto my-2 mr-4"
       >
         View All Cards
       </Button>
