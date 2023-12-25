@@ -1,5 +1,6 @@
 import React from "react";
 import { generateColorFromRGB } from "@/helpers";
+import toast from "react-hot-toast";
 
 const CardDetails = ({ data }) => {
   const generatedColor = generateColorFromRGB(

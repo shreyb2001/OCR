@@ -25,20 +25,14 @@ const formSchema = z.object({
 
 const App = () => {
   const [file, setFile] = useState();
-  const [objectId, setObjectId] = useState();
   const [data, setData] = useState(null);
 
   const router = useRouter();
 
   useEffect(() => {
     const fetchDetails = async () => {
-      let data;
       try {
-        if (objectId) {
-          data = await fetch(`api/${objectId}`);
-        } else {
-          data = await fetch(`api/`);
-        }
+        let data = await fetch(`api//`);
         data = await data.json();
         setData(data);
       } catch (error) {
@@ -47,7 +41,7 @@ const App = () => {
     };
 
     fetchDetails();
-  }, [objectId]);
+  }, []);
 
   const {
     register,
@@ -87,12 +81,15 @@ const App = () => {
       });
 
       result = await result.json();
-      setObjectId(result?._id);
-      toast.success("Scan successful");
-      console.log(result);
+
+      if (result.message) {
+        toast.error(result.message);
+      } else {
+        toast.success("Scan successful");
+        setData(result);
+      }
     } catch (error) {
-      toast.error("Scan Unsuccessful");
-      setObjectId();
+      toast.error(error.message);
       setData(null);
       console.log(error);
     } finally {

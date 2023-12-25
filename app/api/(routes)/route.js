@@ -46,6 +46,18 @@ export async function POST(req) {
       detections,
       "Thai National ID Card"
     );
+    const identificationnumber = searchAfter(
+      detections,
+      "Identification Number"
+    );
+
+    const duplicateData = await IdCard.findOne({
+      identificationNumber: identificationNumber || identificationnumber,
+    });
+
+    if (duplicateData)
+      return NextResponse.json({ message: "This card already exist" });
+
     const name = searchAfter(detections, "Name");
     const lastName = searchAfter(detections, "Last name");
     const birthDate = searchAfter(detections, "Date of Birth");
@@ -54,7 +66,7 @@ export async function POST(req) {
 
     const idCard = await IdCard.create({
       name,
-      identificationNumber,
+      identificationNumber: identificationNumber || identificationnumber,
       lastName,
       birthDate,
       issueDate,
@@ -74,7 +86,12 @@ export async function GET(req, { params }) {
 
   try {
     const data = await IdCard.find({}).sort({ createdAt: -1 });
-    return NextResponse.json(data?.[0]);
+    if (data.length !== 0) return NextResponse.json(data?.[0]);
+    else
+      return new NextResponse(
+        { message: "No data available" },
+        { status: 404 }
+      );
   } catch (error) {
     console.log("CARD_GET", error);
     return new NextResponse.json({ RECENT_CARD_GET: error });
